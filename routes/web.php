@@ -15,7 +15,7 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/doshboard', [DashboardController::class,'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class,'index'])->name('doshboard');
 
 Route::get('/register', [RegisterController::class,'index'])->name('register');
 
