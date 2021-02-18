@@ -30,6 +30,6 @@ class RegisterController extends Controller
             'password'   => hash::make($request->password)
         ]);
 
-        return redirect()->view('dashboard');
+        return redirect()->route('dashboard');
     }
 }
