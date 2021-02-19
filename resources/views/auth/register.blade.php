@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <input type="submit" name="" id="password_confirmation" placeholder="repeat password" class="bg-blue-500 text-white px-4 py-3 font-meduim rounded w-full " value="Register">
+                    <input type="submit" name="" id="password_confirmation" placeholder="repeat password" class="bg-blue-500 text-white px-4 py-3 font-meduim rounded-lg w-full " value="Register">
                 </div>
             </form>
         </div>
