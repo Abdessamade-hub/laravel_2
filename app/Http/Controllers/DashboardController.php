@@ -18,7 +18,9 @@ class DashboardController extends Controller
     {
         $user = auth()->user();
 
-        Mail::to($user)->send(new PostLiked());
+        Mail::to($user)->send(new PostLiked())
+            ->sunject('Some one liked your post');
+        
 
         // dd(auth()->user());
         // dd(auth()->user()->posts);
