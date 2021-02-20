@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\PostLiked;
+
 
 class DashboardController extends Controller
 {
@@ -16,10 +16,7 @@ class DashboardController extends Controller
 
     function index()
     {
-        $user = auth()->user();
 
-        Mail::to($user)->send(new PostLiked())
-            ->sunject('Some one liked your post');
         
 
         // dd(auth()->user());
