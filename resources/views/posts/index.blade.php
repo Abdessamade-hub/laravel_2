@@ -33,13 +33,13 @@
 
             @if($posts->count())
                 @foreach($posts as $post)
-                    <div class="mb-4">
+                    {{-- <div class="mb-4">
                         <a href="{{ route('user.posts',$post->user)  }}" class="font-bold">{{ $post->user->name }}</a> <span class="text-gray-600 text-sm">{{ $post->created_at->diffForHumans() }}</span>
-                    </div>
-                    <p class="mb-2">{{ $post->body }}</p>
+                    </div> --}}
+                    {{-- <p class="mb-2">{{ $post->body }}</p> --}}
 
                     <!-- //if($post->ownedBy(auth()->user())) -->
-
+{{-- 
                     @can('delete', $post)
                     <div>
                         <form action="{{ route('posts.destroy', $post) }}" method="post">
@@ -68,7 +68,70 @@
                     @endif
                     @endauth
                         <span> {{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }} </span>
-                    </div>
+                    </div> --}}
+
+
+
+                    <figure class="md:flex bg-gray-100 rounded-xl p-4 md:p-0 mb-6">
+                        <img class="w-32 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src="http://assets.stickpng.com/images/585e4bcdcb11b227491c3396.png" alt="" width="" height="">
+                        <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+                            <figcaption class="font-medium flex justify-between">
+                                <div class="text-blue-500">
+                                        <a href="{{ route('user.posts',$post->user)  }}" >{{ $post->user->name }}</a> 
+                                </div>
+                                <div class="text-gray-500">
+                                            {{ $post->created_at->diffForHumans() }}
+                                </div>
+                              </figcaption>
+                            <blockquote>
+                            <p class=" font-semibold">
+                              “{{ $post->body }}.”
+                            </p>
+                          </blockquote>
+
+                          <blockquote class="justify-between flex">
+                            @can('delete', $post)
+                            <div>
+                                <form action="{{ route('posts.destroy', $post) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <div class="text-right">
+                                        <div class="">
+                                            <input type="submit" class="text-white bg-red-400 p-2 rounded-lg" value="Delete">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            @endcan
+                            <!-- //endif -->
+                            <div class="flex items-center">
+                            @auth
+                            @if(!$post->likedBy(auth()->user()))
+                                <form action="{{ route('like', $post)}}" method="post" class="mr-1">
+                                
+                                    <!-- <button type="submit"  class="text-blue-500">Like</button> -->
+                                    <input type="submit" class="text-blue-500" value="Like">
+                                    
+                                </form>
+                                
+                            @else
+                                <form action="{{ route('destroy',$post) }}" method="post" class="mr-1">
+                                @csrf
+                                    @method('DELETE')
+                                    <!-- <button type="submit"  class="text-blue-500">Unlike</button> -->
+                                    <input type="submit" class="text-blue-500" value="Unlike">
+                                </form>
+                            @endif
+                            @endauth
+                                <span> {{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span>
+                                
+                            </div>
+                          </blockquote>
+                         
+                        </div>
+                      </figure>
+
+
 
 
                 @endforeach
