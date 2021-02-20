@@ -7,6 +7,15 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth'])->except('index');
+
+        // $this->middleware(['auth'])->only(['store', 'destroy']);
+    } 
+
+
     public function index()
     {
 

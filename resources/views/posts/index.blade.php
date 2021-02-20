@@ -2,8 +2,18 @@
 
 @section('content')
 
-    <div class="justify-center flex ">
+    
+    <div class="justify-center flex">
+    
         <div class="w-6/12 bg-white p-6 rounded-lg">
+       
+        @guest
+             <div class="text-right mb-2">
+                    <a href="{{ route('login') }}" class="text-red-400 ">You are not Logined</a>
+            </div>
+        @endguest
+
+        @auth
             <form action="{{ route('posts') }}" method="POST" class="mb-4">
             @csrf
             <div class="mb-4">
@@ -19,6 +29,7 @@
                 <input type="submit" value="Post" class="bg-blue-500 text-white px-8 py-2 rounded-lg font-meduim">
             </div>
             </form>
+            @endauth
 
             @if($posts->count())
                 @foreach($posts as $post)
