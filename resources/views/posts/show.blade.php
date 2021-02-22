@@ -25,7 +25,7 @@
                     @auth
                     @if(!$post->likedBy(auth()->user()))
                         <form action="{{ route('like', $post)}}" method="post" class="mr-1">
-                        @csrf
+                            @csrf
                             <!-- <button type="submit"  class="text-blue-500">Like</button> -->
                             <input type="submit" class="text-blue-500" value="Like">
                         </form>

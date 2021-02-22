@@ -18,7 +18,8 @@ class PostLikeController extends Controller
 
 
     public function store(Post $post, Request $request)
-    {   
+    {  
+        // dd('ujv');
         // dd($post->likedBy($request->user()));
 
         if($post->likedBy($request->user()))

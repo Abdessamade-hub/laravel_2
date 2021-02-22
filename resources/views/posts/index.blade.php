@@ -84,8 +84,8 @@
                                 </div>
                               </figcaption>
                             <blockquote>
-                            <p class=" font-semibold">
-                              “{{ $post->body }}.”
+                            <p class="font-semibold">
+                              “{{ $post->body }}”
                             </p>
                           </blockquote>
 
@@ -108,7 +108,7 @@
                             @auth
                             @if(!$post->likedBy(auth()->user()))
                                 <form action="{{ route('like', $post)}}" method="post" class="mr-1">
-                                
+                                @csrf
                                     <!-- <button type="submit"  class="text-blue-500">Like</button> -->
                                     <input type="submit" class="text-blue-500" value="Like">
                                     
